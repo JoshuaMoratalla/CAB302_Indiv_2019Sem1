@@ -23,12 +23,14 @@ public class ShapeDisplay extends JFrame implements ActionListener {
 
     private JButton loadButton;
 
-    public String example1 = "C:\\Users\\n9472380\\IdeaProjects\\VectorFileManager\\src\\VecExamples\\example1.vec";
+    public String example1 = "C:\\Users\\Joshua\\Desktop\\temp\\VectorFileManager\\src\\VecExamples\\example1.vec";
     public String example2 = "C:\\Users\\Joshua\\IdeaProjects\\VectorFileManager\\src\\VecExamples\\example2.vec";
     public String example3 = "C:\\Users\\Joshua\\IdeaProjects\\VectorFileManager\\src\\VecExamples\\example3.vec";
 
 
-    public static Dimension WindowSize;
+
+
+    private PaintCanvas paintCanvas;
 
     public ShapeDisplay() throws IOException {
         super("Display thingo");
@@ -41,13 +43,14 @@ public class ShapeDisplay extends JFrame implements ActionListener {
         this.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                WindowSize =e.getComponent().getSize();
+              
             }
         });
 
        // Jm
         pack();
         setVisible(true);
+
     }
 
     public void setMenu(){
