@@ -3,18 +3,11 @@ package MouseListeners;
 import DrawnShapes.*;
 import JFrameWindow.CanvasPanel;
 import JFrameWindow.MainJFrameWindow;
-import NewShapes.EllipsePack;
-import NewShapes.LinePack;
-import NewShapes.PolygonPack;
-import NewShapes.RectanglePack;
-import com.sun.tools.javac.Main;
+import NewShapes.*;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.geom.Point2D;
 
 public class TwoPointMouseListener extends MouseAdapter {
 

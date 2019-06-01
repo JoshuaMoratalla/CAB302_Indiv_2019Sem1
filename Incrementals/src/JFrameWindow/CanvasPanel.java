@@ -1,9 +1,7 @@
 package JFrameWindow;
 
 import DrawnShapes.ShapeType;
-import DrawnShapes.drawableObject;
-import MouseListeners.TwoPointMouseListener;
-import NewShapes.LinePack;
+import NewShapes.drawableObject;
 import NewShapes.PlotPack;
 
 import javax.swing.*;

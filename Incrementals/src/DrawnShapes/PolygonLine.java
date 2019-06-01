@@ -1,8 +1,11 @@
 package DrawnShapes;
 
+import NewShapes.drawableObject;
+import NewShapes.fillableObject;
+
 import java.awt.*;
 
-public class PolygonLine extends Polygon implements drawableObject,fillableObject {
+public class PolygonLine extends Polygon implements drawableObject, fillableObject {
 
     private Color fillColor = ShapeConstants.transparent;
     private Color lineColor = Color.black;

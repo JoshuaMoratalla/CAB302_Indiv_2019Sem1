@@ -1,5 +1,8 @@
 package DrawnShapes;
 
+import NewShapes.drawableObject;
+import NewShapes.fillableObject;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import java.util.ArrayList;
 // *********************************Except For Tools**************************************
 // ***************************************************************************************
 
-public class PolygonFixed extends Polygon implements drawableObject,fillableObject {
+public class PolygonFixed extends Polygon implements drawableObject, fillableObject {
 
     private Color fillColor = ShapeConstants.transparent;
     private Color lineColor = Color.black;

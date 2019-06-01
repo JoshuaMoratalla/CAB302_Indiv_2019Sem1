@@ -1,5 +1,8 @@
 package DrawnShapes;
 
+import NewShapes.drawableObject;
+import NewShapes.fillableObject;
+
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
@@ -11,7 +14,7 @@ import java.awt.geom.Point2D;
 // *********************************Except For Tools**************************************
 // ***************************************************************************************
 
-public class EllipseFixed extends Ellipse2D.Float implements drawableObject,fillableObject {
+public class EllipseFixed extends Ellipse2D.Float implements drawableObject, fillableObject {
     private Color lineColor = Color.black;
     private Color fillColor =transparent;
 

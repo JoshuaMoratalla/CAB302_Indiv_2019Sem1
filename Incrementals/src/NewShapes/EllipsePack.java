@@ -1,8 +1,5 @@
 package NewShapes;
 
-import DrawnShapes.drawableObject;
-import DrawnShapes.fillableObject;
-
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;

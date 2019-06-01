@@ -1,10 +1,13 @@
 package DrawnShapes;
 
+import NewShapes.drawableObject;
+import NewShapes.fillableObject;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class RectangleFree extends Rectangle2D.Float implements drawableObject,fillableObject {
+public class RectangleFree extends Rectangle2D.Float implements drawableObject, fillableObject {
 
     private Color fillColor = ShapeConstants.transparent;
     private Color lineColor = Color.black;

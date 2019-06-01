@@ -1,11 +1,7 @@
 package NewShapes;
 
-import DrawnShapes.drawableObject;
-import DrawnShapes.fillableObject;
-
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class PolygonPack implements drawableObject, fillableObject {
@@ -148,7 +144,7 @@ public class PolygonPack implements drawableObject, fillableObject {
 
     @Override
     public Color getFillColor() {
-        return this.getFillColor();
+        return this.fillColor;
     }
 
     @Override

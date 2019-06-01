@@ -1,5 +1,7 @@
 package DrawnShapes;
 
+import NewShapes.drawableObject;
+
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;

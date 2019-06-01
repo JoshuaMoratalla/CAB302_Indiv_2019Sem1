@@ -1,4 +1,4 @@
-package DrawnShapes;
+package NewShapes;
 
 import java.awt.*;
 

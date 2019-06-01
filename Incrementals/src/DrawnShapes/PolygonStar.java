@@ -1,10 +1,13 @@
 package DrawnShapes;
 
+import NewShapes.drawableObject;
+import NewShapes.fillableObject;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-public class PolygonStar extends Polygon implements drawableObject,fillableObject {
+public class PolygonStar extends Polygon implements drawableObject, fillableObject {
     private Color fillColor = transparent;
     private Color lineColor = Color.black;
 
