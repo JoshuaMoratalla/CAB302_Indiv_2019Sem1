@@ -126,14 +126,25 @@ public class PolygonPack implements drawableObject, fillableObject {
     }
 
     @Override
-    public String toVectorString() {
-        int[] xVal = polygonShape.xpoints;
-        int[] yVal = polygonShape.ypoints;
+    public String toVectorString(Dimension scaleRatio) {
+        int[] intXval = polygonShape.xpoints;
+        int[] intYval = polygonShape.ypoints;
+
+        int points = getPolygonShape().npoints;
+        double[] doubleXval = new double[points];
+        double[] doubleYval = new double[points];
+
+        for(int n = 0 ; n < points ;n++ ){
+            doubleXval[n] = intXval[n];
+            doubleYval[n] = intYval[n];
+        }
 
         StringBuilder str = new StringBuilder("POLYGON");
 
         for(int n = 0 ; n < getPolygonShape().npoints; n ++){
-            str.append(" ").append(xVal[n]).append(" ").append(yVal[n]);
+            double scaledX1 = doubleXval[n]/scaleRatio.getWidth();
+            double scaledY1 = doubleYval[n]/scaleRatio.getHeight();
+            str.append(" ").append(scaledX1).append(" ").append(scaledY1);
         }
         return str.toString();
     }

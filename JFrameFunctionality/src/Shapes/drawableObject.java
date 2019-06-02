@@ -14,7 +14,7 @@ public interface drawableObject {
 
     //all drawable have line colors
 
-    String toVectorString();
+    String toVectorString( Dimension scaleRatio);
     String toLineColorString(Color currentPenColor);
 
 

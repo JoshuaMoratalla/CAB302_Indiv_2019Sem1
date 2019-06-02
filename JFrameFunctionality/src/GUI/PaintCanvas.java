@@ -52,7 +52,7 @@ public class PaintCanvas extends JComponent {
 
 
                 System.out.print(draw.getLineColor().toString());
-                System.out.print(draw.toVectorString());
+                System.out.print(draw.toVectorString(this.getSize()));
             }
 
 

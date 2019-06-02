@@ -87,10 +87,17 @@ public class EllipsePack implements drawableObject, fillableObject {
     }
 
     @Override
-    public String toVectorString() {
+    public String toVectorString(Dimension scaleRatio) {
         StringBuilder str = new StringBuilder("ELLIPSE");
-        str.append(" ").append(getEllipseShape().getMinX()).append(" ").append(getEllipseShape().getMinY());
-        str.append(" ").append(getEllipseShape().getMaxX()).append(" ").append(getEllipseShape().getMaxY());
+
+        double scaledX1 = getEllipseShape().getMinX()/scaleRatio.getWidth();
+        double scaledY1 = getEllipseShape().getMinY()/scaleRatio.getHeight();
+        double scaledX2 = getEllipseShape().getMaxX()/scaleRatio.getWidth();
+        double scaledY2 = getEllipseShape().getMaxY()/scaleRatio.getHeight();
+
+        str.append(" ").append(scaledX1).append(" ").append(scaledY1);
+        str.append(" ").append(scaledX2).append(" ").append(scaledY2);
+
         return str.toString();
     }
 
