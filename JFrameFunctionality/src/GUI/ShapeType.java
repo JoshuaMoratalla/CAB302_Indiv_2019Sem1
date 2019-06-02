@@ -1,3 +1,5 @@
+package GUI;
+
 import java.util.EnumSet;
 
 public enum ShapeType {

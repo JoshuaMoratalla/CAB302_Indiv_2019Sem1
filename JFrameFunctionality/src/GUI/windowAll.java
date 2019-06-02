@@ -1,9 +1,13 @@
+package GUI;
+
+import Shapes.*;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Set;
@@ -11,20 +15,52 @@ import java.util.Set;
 public class windowAll extends JFrame implements ActionListener {
 
     public static Dimension staticDimensions = new Dimension(1000,1000);
-    private ShapeType shapeSelection;
+    private ShapeType shapeSelection =ShapeType.LINEBAS;
 
-
-    private Color currentLineColor;
+    private Color currentLineColor = Color.black;
     private JComponent LineColorShower;
 
-    public windowAll(){
+    private Color currentFillColor = fillableObject.transparent;
+    private JComponent FillColorShower;
 
+    private ArrayList<Point2D> mouseClicks;
+    private PaintCanvas paintCanvas;
+
+
+    public windowAll(){
         setWindow();
         setMenuBar();
+
+        this.paintCanvas = setPaintCanvas();
+        this.paintCanvas.addMouseListener(setMouseListener());
+        add(getPaintCanvas());
+
 
 
         pack();
         setVisible(true);
+
+
+    }
+
+    public ShapeType getShapeSelection() {
+        return this.shapeSelection;
+    }
+
+    public Color getCurrentLineColor() {
+        return this.currentLineColor;
+    }
+
+    public JComponent getLineColorShower() {
+        return this.LineColorShower;
+    }
+
+    public ArrayList<Point2D> getMouseClicks() {
+        return this.mouseClicks;
+    }
+
+    public PaintCanvas getPaintCanvas() {
+        return this.paintCanvas;
     }
 
     private void setWindow(){
@@ -94,6 +130,7 @@ public class windowAll extends JFrame implements ActionListener {
         JMenu menuShapes = new JMenu("Shapes");
         ButtonGroup shapeRadioButtons = new ButtonGroup();
 
+
         Set<ShapeType> shapeSet = EnumSet.allOf(ShapeType.class);
 
         ArrayList<JRadioButton> radiobuttAsList = new ArrayList<>();
@@ -110,10 +147,10 @@ public class windowAll extends JFrame implements ActionListener {
 
         }
 
-
         ActionListener shapeChoiceListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                getMouseClicks().clear();
                 for (JRadioButton button : radiobuttAsList){
                     if(e.getSource() == button){
                         shapeSelection= ShapeType.matchEnum( e.getActionCommand());
@@ -126,7 +163,11 @@ public class windowAll extends JFrame implements ActionListener {
         for(JRadioButton button: radiobuttAsList){
             button.addActionListener(shapeChoiceListener);
             menuShapes.add(button);
+            if(button.getText().equals("Line Basic")){
+                button.setSelected(true);
+            }
         }
+
 
         return menuShapes;
     }
@@ -136,21 +177,93 @@ public class windowAll extends JFrame implements ActionListener {
         JButton LineColorButton = new JButton("Line Color");
         LineColorButton.setActionCommand("NewLineColor");
 
+        JButton FillColorButton = new JButton("Line Color");
+        FillColorButton.setActionCommand("NewFillColor");
+
         LineColorButton.addActionListener(this::actionPerformed);
         this.LineColorShower = new JPanel();
         LineColorShower.setForeground(this.currentLineColor);
         LineColorShower.setBackground(this.currentLineColor);
 
+
+        FillColorButton.addActionListener(this::actionPerformed);
+        this.FillColorShower = new JPanel();
+        FillColorShower.setForeground(this.currentFillColor);
+        FillColorShower.setBackground(this.currentFillColor);
+
         colorMenu.add(LineColorButton);
         colorMenu.add(LineColorShower);
+        colorMenu.add(FillColorButton);
+        colorMenu.add(FillColorShower);
 
         return colorMenu;
     }
 
+    private PaintCanvas setPaintCanvas(){
+        return new PaintCanvas();
+    }
+
+    private MouseListener setMouseListener(){
+        this.mouseClicks = new ArrayList<>();
+
+        MouseListener mouseListener = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                mouseClicks.add(new Point2D.Float(e.getX(),e.getY()));
+                System.out.println(String.format("Shape Selection when clicked: %s || Current Clicks: %d ",getShapeSelection().getShapeTypeName(),getMouseClicks().size() ));
+
+
+                if(mouseClicks.size() ==1  && getShapeSelection().equals(ShapeType.LINEPOINT)){
+
+                    drawableObject newPlot = new PlotPack(e.getPoint());
+                    newPlot.changeLineColor(getCurrentLineColor());
+
+                    getPaintCanvas().addShapeToCanvas(newPlot);
+                    getMouseClicks().clear();
+
+                    System.out.print( "delivered line");
+
+                }else if(mouseClicks.size() == 2 && !getShapeSelection().equals(ShapeType.LINEPOINT) &&
+                        !getShapeSelection().equals(ShapeType.POLYLINE)){
+                    System.out.print( "entered the two point area");
+                    if(getShapeSelection().equals(ShapeType.ELLFREE)){
+                        getPaintCanvas().addShapeToCanvas(new EllipsePack(getMouseClicks().get(0),getMouseClicks().get(1),true));
+                    }
+                    if(getShapeSelection().equals(ShapeType.ELLFIX)){
+                        getPaintCanvas().addShapeToCanvas(new EllipsePack(getMouseClicks().get(0),getMouseClicks().get(1),false));
+                    }
+                    if(getShapeSelection().equals(ShapeType.LINEBAS)){
+                        drawableObject newLine = new LinePack(getMouseClicks().get(0), getMouseClicks().get(1));
+                        newLine.changeLineColor(getCurrentLineColor());
+                        getPaintCanvas().addShapeToCanvas(newLine);
+                    }
+
+                    getMouseClicks().clear();
+
+
+                }else if( mouseClicks.size() > 2 && getShapeSelection().equals(ShapeType.POLYLINE)){
+                    //if normal click or double click
+                    if(e.getClickCount() > 1 ){
+                        System.out.println("Creating Polygon");
+                        drawableObject newPolyLine = new PolygonPack(getMouseClicks());
+                        newPolyLine.changeLineColor(currentLineColor);
+                        getPaintCanvas().addShapeToCanvas(newPolyLine);
+                        getMouseClicks().clear();
+                    }
+                }
+
+
+            }
+        };
+
+        return mouseListener;
+    }
+
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
 
         //needs to be replicated for the fill color
         if(e.getActionCommand().equals("NewLineColor")){
@@ -167,9 +280,23 @@ public class windowAll extends JFrame implements ActionListener {
                 currentLineColor = newColor;
                 LineColorShower.setBackground(newColor);
             }
-        }
+        }else if(e.getActionCommand().equals("NewFillColor")){
+            JColorChooser colorChooser = new JColorChooser(currentLineColor);
+            colorChooser.getSelectionModel().addChangeListener(new ChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    System.out.println( e.getSource().toString());
+                }
+            });
+            Color newColor = colorChooser.showDialog(this, "Select a new Line Color", currentFillColor);
 
+            if(newColor!=null){
+                currentFillColor = newColor;
+                FillColorShower.setBackground(newColor);
+            }
+        }
     }
+
     public static void main (String []args){
         new windowAll();
     }

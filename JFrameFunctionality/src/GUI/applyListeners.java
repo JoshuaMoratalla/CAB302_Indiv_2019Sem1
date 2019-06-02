@@ -1,3 +1,5 @@
+package GUI;
+
 public class applyListeners {
     //goal is to apply listeners to the menubars without the code being messsy
 

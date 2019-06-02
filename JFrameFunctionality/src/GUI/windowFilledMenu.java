@@ -1,6 +1,6 @@
+package GUI;
+
 import javax.swing.*;
-import javax.swing.colorchooser.ColorChooserComponentFactory;
-import javax.swing.plaf.ColorChooserUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
