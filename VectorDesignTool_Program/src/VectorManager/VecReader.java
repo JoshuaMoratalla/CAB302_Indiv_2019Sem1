@@ -98,7 +98,7 @@ public class VecReader {
     }
 
     /**
-     *
+     *Returns a list of drawableObjects for the new cPaint canvas to have
      * @param file the file from which it sources its vec commands.
      * @return
      * @throws IOException

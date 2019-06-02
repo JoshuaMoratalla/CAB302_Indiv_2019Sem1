@@ -50,6 +50,11 @@ public class windowAll extends JFrame implements ActionListener {
 
         pack();
         setVisible(true);
+
+
+
+
+
     }
 
 
@@ -109,7 +114,7 @@ public class windowAll extends JFrame implements ActionListener {
         JMenu menuFile = setFileMenu();
         JMenu menuShapes = setShapesMenu();
         JMenu menuColors = setColorMenu(); ////Unimplemented yet
-        JMenu menuUndoHistory = new JMenu("History");////Unimplemented yet
+        JMenu menuUndoHistory = new JMenu("History");
 
         menuBAR.add(menuFile);
 

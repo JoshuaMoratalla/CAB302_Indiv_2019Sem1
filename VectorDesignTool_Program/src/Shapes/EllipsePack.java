@@ -11,6 +11,12 @@ public class EllipsePack implements drawableObject, fillableObject {
     private Color fillColor =transparent;
 
 
+    /**
+     *
+     * @param startPoint centre point of the circle to be made
+     * @param endPoint the edge of the circle if its fixed, if not then its the other point
+     * @param isFree controller for whether it is fixed or free
+     */
     public EllipsePack(Point2D startPoint, Point2D endPoint, boolean isFree){ //making a circle
         if(isFree){
             int x,y, width,height;
