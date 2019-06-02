@@ -50,14 +50,12 @@ public class PaintCanvas extends JComponent {
 
 
                 System.out.print(draw.getLineColor().toString());
-                System.out.print(draw.toVectorString());
+                //System.out.print(draw.toVectorString());
             }
 
 
 
-            // drawableObject draw = getDrawableList().get(getDrawableList().size());
 
-            // System.out.println(draw.toVectorString());
         }
         //read line
         //determine if its pen fill or shape initilization
@@ -85,7 +83,7 @@ public class PaintCanvas extends JComponent {
         //paintBackground(g2);
 
         g2.setStroke(new BasicStroke(2));
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.25f));
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
 
         g2.setPaint(this.lineColor);
 
@@ -93,7 +91,7 @@ public class PaintCanvas extends JComponent {
             Shape shape = drawObject.getShape();
             g2.setPaint(drawObject.getLineColor());
             g2.draw(shape);
-            if(drawObject instanceof  fillableObject){
+            if(drawObject instanceof  fillableObject && ((fillableObject) drawObject).getFillColor() != transparent){
                 g2.setPaint(((fillableObject) drawObject).getFillColor());
                 g2.fill(shape);
             }

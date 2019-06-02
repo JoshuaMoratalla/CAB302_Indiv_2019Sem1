@@ -1,7 +1,6 @@
 package ShapesPackage;
 
-import java.awt.Color;
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
@@ -44,10 +43,13 @@ public class PlotPack implements drawableObject {
 
 
     @Override
-    public String toVectorString() {
-        StringBuilder str = new StringBuilder("LINE");
-        str.append(" ").append(getPlotShape().getX1()).append(" ").append(getPlotShape().getY1());
-        str.append(" ").append(getPlotShape().getX2()).append(" ").append(getPlotShape().getY2());
+    public String toVectorString(Dimension scaleRatio) {
+        StringBuilder str = new StringBuilder("PLOT");
+
+        double scaledX1 = getPlotShape().getX1()/scaleRatio.getWidth();
+        double scaledY1 =  getPlotShape().getY1()/scaleRatio.getHeight();
+
+        str.append(" ").append(scaledX1).append(" ").append(scaledY1);
         return str.toString();
     }
 

@@ -62,10 +62,16 @@ public class RectanglePack implements drawableObject, fillableObject {
     }
 
     @Override
-    public String toVectorString() {
+    public String toVectorString(Dimension scaleRatio) {
         StringBuilder str = new StringBuilder("RECTANGLE");
-        str.append(" ").append(getRectangleShape().getMinX()).append(" ").append(getRectangleShape().getMinY());
-        str.append(" ").append(getRectangleShape().getMaxX()).append(" ").append(getRectangleShape().getMaxY());
+
+        double scaledX1 = getRectangleShape().getMinX()/scaleRatio.getWidth();
+        double scaledY1 = getRectangleShape().getMinY()/scaleRatio.getHeight();
+        double scaledX2 = getRectangleShape().getMaxX()/scaleRatio.getWidth();
+        double scaledY2 = getRectangleShape().getMaxY()/scaleRatio.getHeight();
+
+        str.append(" ").append(scaledX1).append(" ").append(scaledY1);
+        str.append(" ").append(scaledX2).append(" ").append(scaledY2);
         return str.toString();
     }
 

@@ -46,15 +46,21 @@ public class LinePack implements drawableObject {
         this.lineColor = newColor;
     }
 
-
     @Override
-    public String toVectorString() {
-
+    public String toVectorString(Dimension scaleRatio) {
         StringBuilder str = new StringBuilder();
-        str.append(" ").append(getLineShape().getX1()).append(" ").append(getLineShape().getY1());
-        str.append(" ").append(getLineShape().getX2()).append(" ").append(getLineShape().getY2());
+
+        double scaledX1 = getLineShape().getX1()/scaleRatio.getWidth();
+        double scaledY1 = getLineShape().getY1()/scaleRatio.getHeight();
+        double scaledX2 = getLineShape().getX2()/scaleRatio.getWidth();
+        double scaledY2 = getLineShape().getY2()/scaleRatio.getHeight();
+
+        str.append(" ").append(scaledX1).append(" ").append(scaledY1);
+        str.append(" ").append(scaledX2).append(" ").append(scaledY2);
         return str.toString();
     }
+
+
 
     @Override
     public String toLineColorString(Color currentPenColor) {
