@@ -22,6 +22,7 @@ public class ShapeDisplay extends JFrame implements ActionListener {
 
 
     private JButton loadButton;
+    private JButton saveButton;
 
     public String example1 = "C:\\Users\\Joshua\\IdeaProjects\\VectorReader\\src\\VecFiles\\example1.vec";
     public String example2 = "C:\\Users\\Joshua\\IdeaProjects\\VectorFileManager\\src\\VecExamples\\example2.vec";
@@ -38,8 +39,7 @@ public class ShapeDisplay extends JFrame implements ActionListener {
 
         setMenu();
         //add JComponent that will read the file and paint it
-        this.stringList = FileTranslator(example1);
-        this.setPreferredSize(new Dimension(1000,1000));
+        this.setPreferredSize(new Dimension(1016,1062));
         this.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
@@ -62,9 +62,12 @@ public class ShapeDisplay extends JFrame implements ActionListener {
 
         JMenu fileMenu = new JMenu("File");
         this.loadButton = new JButton("Load");
+        this.saveButton = new JButton("Save");
         this.loadButton.addActionListener(this::actionPerformed);
+        this.saveButton.addActionListener(this::actionPerformed);
 
         fileMenu.add(loadButton);
+        fileMenu.add(saveButton);
         menuBar.add(fileMenu);
 
         setJMenuBar(menuBar);
@@ -72,28 +75,9 @@ public class ShapeDisplay extends JFrame implements ActionListener {
 
 
 
-
-
-    public ArrayList<String> FileTranslator( String pathname) throws IOException {
-        File file = new File(pathname);
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-        ArrayList<String> linesOfText = new ArrayList<>();
-
-        String line;
-        while ((line = bufferedReader.readLine()) != null){
-            // System.out.println(line);
-            linesOfText.add(line);
-        }
-        bufferedReader.close();
-
-        return linesOfText;
-    }
-
-
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if(e.getSource() ==loadButton ){
             String filePath = null;
             JFileChooser fileChooser = new JFileChooser();
@@ -107,17 +91,47 @@ public class ShapeDisplay extends JFrame implements ActionListener {
 
             if(filePath!= null){
                 try {
-                    this.add( new PaintCanvas( FileTranslator(filePath)));
+                    //this.add( new PaintCanvas( new File(filePath)));
+                    this.paintCanvas = new PaintCanvas( new File(filePath));
+                    add(this.paintCanvas);
+
 
                 } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                validate();
+            }
+
+        }else if( e.getSource() == saveButton){
+            PaintCanvas canvas = getPaintCanvas();
+
+            JFileChooser fileChooser = new JFileChooser();
+            int fileVal = fileChooser.showSaveDialog(saveButton);
+            if(fileVal == JFileChooser.APPROVE_OPTION){
+                File newFile = fileChooser.getSelectedFile();
+                if(newFile == null){
+                    System.out.print("What ever you did triggered this?");
+                }else if(newFile.getName().toLowerCase().endsWith(".vec")){
+                    newFile =new File( newFile.getParentFile(), newFile.getName()+ ".vec");
+                }
+                VecReader vecReader = new VecReader(this.getSize());
+
+                try{
+                    File FilledFile = vecReader.TranslateCanvas(getPaintCanvas(),newFile);
+
+
+                }catch (Exception ex){
                     ex.printStackTrace();
                 }
             }
 
         }
+
     }
 
-
+    public PaintCanvas getPaintCanvas() {
+        return this.paintCanvas;
+    }
 
     public static void main(String []args) throws IOException {
         ShapeDisplay shapeDisplay = new ShapeDisplay();

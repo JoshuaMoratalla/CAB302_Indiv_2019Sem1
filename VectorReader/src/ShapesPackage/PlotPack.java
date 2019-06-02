@@ -56,7 +56,7 @@ public class PlotPack implements drawableObject {
     @Override
     public String toLineColorString(Color currentPenColor) {
         if(currentPenColor != getLineColor()){
-            return String.format("PEN %s", Integer.toHexString(getLineColor().getRGB()));
+            return String.format("PEN #%s", Integer.toHexString(getLineColor().getRGB()));
         }else{
             return null;
         }

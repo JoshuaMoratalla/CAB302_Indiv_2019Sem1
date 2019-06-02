@@ -78,7 +78,7 @@ public class RectanglePack implements drawableObject, fillableObject {
     @Override
     public String toLineColorString(Color currentPenColor) {
         if(currentPenColor != getLineColor()){
-            return String.format("PEN %s", Integer.toHexString(getLineColor().getRGB()));
+            return String.format("PEN #%s", Integer.toHexString(getLineColor().getRGB()));
         }else{
             return null;
         }
@@ -102,7 +102,7 @@ public class RectanglePack implements drawableObject, fillableObject {
     @Override
     public String toFillColorString(Color currentFillColor) {
         if(currentFillColor != getFillColor()){
-            return String.format("FILL %s", Integer.toHexString(getFillColor().getRGB()));
+            return String.format("FILL #%s", Integer.toHexString(getFillColor().getRGB()));
         }else{
             return null;
         }

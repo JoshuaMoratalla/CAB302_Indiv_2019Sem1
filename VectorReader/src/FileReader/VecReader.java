@@ -34,32 +34,39 @@ public class VecReader {
 
             if(drawableObject instanceof  fillableObject){
                 String pen = drawableObject.toLineColorString(lineColor);
+
                 if(pen!=null){
                     textWriter.write(pen);
+                    textWriter.newLine();
                 }
 
                 String fill = ((fillableObject) drawableObject).toFillColorString(fillColor);
                 if(fill != null){
                     textWriter.write(fill);
+                    textWriter.newLine();
                 }
                 textWriter.write(drawableObject.toVectorString(canvasDimension));
+                textWriter.newLine();
+
             }else{
                 String pen = drawableObject.toLineColorString(lineColor);
                 if(pen!=null){
                     textWriter.write(pen);
+                    textWriter.newLine();
                 }
                 textWriter.write(drawableObject.toVectorString(canvasDimension));
+                textWriter.newLine();
             }
-
         }
+        textWriter.close();
 
-        return null;
+
+        return file;
     }
 
 
 
-    public ArrayList<drawableObject> TranslateFile(String pathName) throws IOException {
-        File file = new File(pathName);
+    public ArrayList<drawableObject> TranslateFile(File file) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
         ArrayList<String> linesOfText = new ArrayList<>();
 
@@ -95,10 +102,10 @@ public class VecReader {
         return shapePack;
     }
 
-    public drawableObject translateLine(String input){
+    private drawableObject translateLine(String input){
         String[] lineSplit = input.split(" ");
         String firstPart = lineSplit[0];
-        System.out.print(firstPart +"||");
+        System.out.println(firstPart +"||");
 
         if(firstPart.equals("PEN") ||firstPart.equals("FILL") ){
             return null;
@@ -122,14 +129,14 @@ public class VecReader {
                 System.out.println("TextLine is a plot");
                 drawObject = convertStringToPlot(lineSplit);
             }else{
-                System.out.println("Feck");
+
             }
             return drawObject;
         }
     }
 
 
-    public Color translateColor( String input){
+    private Color translateColor( String input){
         return Color.decode(input);
 
     }
@@ -137,7 +144,7 @@ public class VecReader {
 
 
 
-    public PolygonPack convertStringToPolygon(String[] lineset){
+    private PolygonPack convertStringToPolygon(String[] lineset){
         System.out.println("returned a poly");
         String[] frontSnip  = Arrays.copyOfRange(lineset,1,lineset.length );
         int indivCoords = frontSnip.length;
@@ -163,7 +170,7 @@ public class VecReader {
         return  new PolygonPack(newPoints);
     }
 
-    public LinePack convertStringToLine(String[] lineset){
+    private LinePack convertStringToLine(String[] lineset){
         int numbersToMakeLine =5;
         String[] frontSnip  = Arrays.copyOfRange(lineset,1,numbersToMakeLine );
         double[] indivPoints = new double[numbersToMakeLine];
@@ -190,7 +197,7 @@ public class VecReader {
         return new LinePack(startPoint,endPoint);
     }
 
-    public EllipsePack convertStringToEllipse(String[] lineset){
+    private EllipsePack convertStringToEllipse(String[] lineset){
         int numbersToMakeLine =5;
 
         String[] frontSnip  = Arrays.copyOfRange(lineset,1,numbersToMakeLine );
@@ -208,7 +215,7 @@ public class VecReader {
         return new EllipsePack(startPoint,endPoint,true);
     }
 
-    public RectanglePack convertStringToRectangle(String[] lineset){
+    private RectanglePack convertStringToRectangle(String[] lineset){
         int numbersToMakeLine =4;
 
         String[] frontSnip  = Arrays.copyOfRange(lineset,1,numbersToMakeLine );
@@ -224,7 +231,7 @@ public class VecReader {
         return new RectanglePack(startPoint,endPoint);
     }
 
-    public PlotPack convertStringToPlot(String[] lineset){
+    private PlotPack convertStringToPlot(String[] lineset){
         int numbersToMakeLine =2;
 
         String[] frontSnip  = Arrays.copyOfRange(lineset,1,numbersToMakeLine );

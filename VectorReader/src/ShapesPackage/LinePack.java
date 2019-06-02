@@ -48,7 +48,7 @@ public class LinePack implements drawableObject {
 
     @Override
     public String toVectorString(Dimension scaleRatio) {
-        StringBuilder str = new StringBuilder();
+        StringBuilder str = new StringBuilder("LINE");
 
         double scaledX1 = getLineShape().getX1()/scaleRatio.getWidth();
         double scaledY1 = getLineShape().getY1()/scaleRatio.getHeight();
@@ -65,7 +65,7 @@ public class LinePack implements drawableObject {
     @Override
     public String toLineColorString(Color currentPenColor) {
         if(currentPenColor != getLineColor()){
-            return String.format("PEN %s", Integer.toHexString(getLineColor().getRGB()));
+            return String.format("PEN #%s", Integer.toHexString(getLineColor().getRGB()));
         }else{
             return null;
         }
