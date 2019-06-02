@@ -12,7 +12,6 @@ public class EllipsePack implements drawableObject, fillableObject {
 
 
     public EllipsePack(Point2D startPoint, Point2D endPoint, boolean isFree){ //making a circle
-
         if(isFree){
             int x,y, width,height;
 
@@ -33,11 +32,11 @@ public class EllipsePack implements drawableObject, fillableObject {
 
             this.ellipseShape = new Ellipse2D.Float(x,y,width,height);
         }else{
-            double distance = startPoint.distance(endPoint);
+            double distance = startPoint.distance(endPoint);//dis
             int x = (int)(startPoint.getX() - distance);
-            int y = (int)(startPoint.getY()-distance);
-            int width = (int)distance;
-            int height = (int) distance;
+            int y = (int)(startPoint.getY() - distance);
+            int width = (int)distance*2;
+            int height = (int) distance*2;
             this.ellipseShape = new Ellipse2D.Float(x,y,width,height);
         }
 

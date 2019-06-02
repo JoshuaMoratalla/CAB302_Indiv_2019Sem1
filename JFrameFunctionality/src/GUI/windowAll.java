@@ -30,17 +30,17 @@ public class windowAll extends JFrame implements ActionListener {
     public windowAll(){
         setWindow();
         setMenuBar();
-
         this.paintCanvas = setPaintCanvas();
         this.paintCanvas.addMouseListener(setMouseListener());
         add(getPaintCanvas());
-
-
+        /*
+        this.paintCanvas = setPaintCanvas();
+        this.paintCanvas.addMouseListener(setMouseListener());
+        add(getPaintCanvas());
+        */
 
         pack();
         setVisible(true);
-
-
     }
 
     public ShapeType getShapeSelection() {
@@ -102,7 +102,7 @@ public class windowAll extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == buttonNew){
-                    //clear canvas
+                    makeNewCanvas();
                     System.out.println("New Button Triggered");
                 }else if(e.getSource() == buttonLoad){
                     //load file
@@ -177,7 +177,7 @@ public class windowAll extends JFrame implements ActionListener {
         JButton LineColorButton = new JButton("Line Color");
         LineColorButton.setActionCommand("NewLineColor");
 
-        JButton FillColorButton = new JButton("Line Color");
+        JButton FillColorButton = new JButton("Fill Color");
         FillColorButton.setActionCommand("NewFillColor");
 
         LineColorButton.addActionListener(this::actionPerformed);
@@ -225,19 +225,28 @@ public class windowAll extends JFrame implements ActionListener {
 
                 }else if(mouseClicks.size() == 2 && !getShapeSelection().equals(ShapeType.LINEPOINT) &&
                         !getShapeSelection().equals(ShapeType.POLYLINE)){
+                    drawableObject shape = null;
                     System.out.print( "entered the two point area");
                     if(getShapeSelection().equals(ShapeType.ELLFREE)){
-                        getPaintCanvas().addShapeToCanvas(new EllipsePack(getMouseClicks().get(0),getMouseClicks().get(1),true));
-                    }
-                    if(getShapeSelection().equals(ShapeType.ELLFIX)){
-                        getPaintCanvas().addShapeToCanvas(new EllipsePack(getMouseClicks().get(0),getMouseClicks().get(1),false));
-                    }
-                    if(getShapeSelection().equals(ShapeType.LINEBAS)){
-                        drawableObject newLine = new LinePack(getMouseClicks().get(0), getMouseClicks().get(1));
-                        newLine.changeLineColor(getCurrentLineColor());
-                        getPaintCanvas().addShapeToCanvas(newLine);
+                        shape = new EllipsePack(getMouseClicks().get(0),getMouseClicks().get(1),true);
+                    }else if(getShapeSelection().equals(ShapeType.ELLFIX)){
+                        shape = new EllipsePack(getMouseClicks().get(0),getMouseClicks().get(1),false);
+                    }else if(getShapeSelection().equals(ShapeType.LINEBAS)){
+                        shape = new LinePack(getMouseClicks().get(0), getMouseClicks().get(1));
+                    } else if(getShapeSelection().equals(ShapeType.RECTFREE)){
+                        shape = new RectanglePack(getMouseClicks().get(0), getMouseClicks().get(1));
+                    }else if(getShapeSelection().equals(ShapeType.POLYFIX)){
+                        shape = new PolygonPack(getMouseClicks().get(0), getMouseClicks().get(1),6, true);
+                    }else if(getShapeSelection().equals(ShapeType.POLYSTAR)){
+                        shape = new PolygonPack(getMouseClicks().get(0), getMouseClicks().get(1),6, false);
                     }
 
+
+                    if(shape instanceof fillableObject){
+                        ((fillableObject)shape).changeFillColor(currentFillColor);
+                    }
+                    shape.changeLineColor(currentLineColor);
+                    getPaintCanvas().addShapeToCanvas(shape);
                     getMouseClicks().clear();
 
 
@@ -247,6 +256,7 @@ public class windowAll extends JFrame implements ActionListener {
                         System.out.println("Creating Polygon");
                         drawableObject newPolyLine = new PolygonPack(getMouseClicks());
                         newPolyLine.changeLineColor(currentLineColor);
+                        ((fillableObject)newPolyLine).changeFillColor(currentFillColor);
                         getPaintCanvas().addShapeToCanvas(newPolyLine);
                         getMouseClicks().clear();
                     }
@@ -257,6 +267,16 @@ public class windowAll extends JFrame implements ActionListener {
         };
 
         return mouseListener;
+    }
+
+    public void makeNewCanvas(){
+        remove(this.paintCanvas);
+        this.paintCanvas = setPaintCanvas();
+        this.paintCanvas.addMouseListener(setMouseListener());
+        add(getPaintCanvas());
+        validate();//
+
+
     }
 
 

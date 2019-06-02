@@ -23,6 +23,8 @@ public class PaintCanvas extends JComponent {
 
     public PaintCanvas(){
         this.drawableList = new ArrayList<>();
+        setVisible(true);
+
     }
 
     public PaintCanvas(ArrayList<String> input){
@@ -59,6 +61,7 @@ public class PaintCanvas extends JComponent {
 
             // System.out.println(draw.toVectorString());
         }
+    repaint();
         //read line
         //determine if its pen fill or shape initilization
         //if pen and or fill change relative contexts to color
@@ -85,7 +88,7 @@ public class PaintCanvas extends JComponent {
         //paintBackground(g2);
 
         g2.setStroke(new BasicStroke(2));
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.25f));
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
 
         g2.setPaint(this.lineColor);
 

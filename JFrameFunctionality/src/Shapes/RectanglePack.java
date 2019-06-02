@@ -80,7 +80,7 @@ public class RectanglePack implements drawableObject, fillableObject {
 
     @Override
     public Color getFillColor() {
-        return this.getFillColor();
+        return this.fillColor;
     }
 
     @Override

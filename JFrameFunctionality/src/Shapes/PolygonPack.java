@@ -69,6 +69,7 @@ public class PolygonPack implements drawableObject, fillableObject {
             int xCoordinate = (int) (startPoint.getX() + outerRadius * Math.cos(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Outer));
             int yCoordinate = (int) (startPoint.getY() + outerRadius * Math.sin(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Outer));
             bufferOuterList.add( new Point(xCoordinate,yCoordinate));
+            System.out.print("Amount of Sides"+amountOfSides);
         }
 
         for(int iterationCount = 0; iterationCount < amountOfSides; iterationCount ++){
@@ -80,14 +81,18 @@ public class PolygonPack implements drawableObject, fillableObject {
         int[] xPoint = new int[amountOfSides *2];
         int[] yPoint = new int[amountOfSides *2];
 
-        for(int n = 0; n < amountOfSides *2 ; n ++){
-            xPoint[n] =(int) bufferOuterList.get(n).getX();
-            yPoint[n] =(int) bufferOuterList.get(n).getY();
+        for(int n = 0; n < amountOfSides  ; n ++){
+
+            xPoint[2*n] =(int) bufferOuterList.get(n).getX();
+            yPoint[2*n] =(int) bufferOuterList.get(n).getY();
+
+            xPoint[(2*n)+1] =(int) bufferInnerList.get(n).getX();
+            yPoint[(2*n)+1] =(int) bufferInnerList.get(n).getY();
             // addPoint((int) bufferOuterList.get(x).getX(),(int) bufferOuterList.get(x).getY());
             // addPoint((int) bufferInnerList.get(x).getX(),(int) bufferInnerList.get(x).getY());
         }
 
-        return  new Polygon(xPoint,yPoint,amountOfSides);
+        return  new Polygon(xPoint,yPoint,amountOfSides*2);
     }
 
 
