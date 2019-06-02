@@ -318,6 +318,7 @@ public class windowAll extends JFrame implements ActionListener {
 
     /**
      * An action event handler that triggers when the certain buttons of File and Color are triggered.
+     * Buttons related to the function are the new,load,save and color buttons.
      * @param e the event of the action
      */
     @Override
@@ -370,7 +371,7 @@ public class windowAll extends JFrame implements ActionListener {
 
             if(filePath!= null){
                 try {
-                    //this.add( new PaintCanvas( new File(filePath)));
+
                     remove(this.paintCanvas);
                     this.paintCanvas = new PaintCanvas( new File(filePath));
                     this.paintCanvas.addMouseListener(setMouseListener());
@@ -382,36 +383,29 @@ public class windowAll extends JFrame implements ActionListener {
                 validate();
             }
         }
+
+        /**
+         * Usage of Tutorial Java2s
+         * Reference URL :http://www.java2s.com/Tutorials/Java/Swing_How_to/JFileChooser/Make_JFileChooser_to_save_file.htm
+         */
         else if(e.getActionCommand().equals("Save")){
             JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                    ".vec","vec");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(".vec","vec");
             fileChooser.setFileFilter(filter);
-
             int fileVal = fileChooser.showSaveDialog((JButton)e.getSource());
+
             if(fileVal == JFileChooser.APPROVE_OPTION){
+
                 File newFile = fileChooser.getSelectedFile();
-                newFile.getName().concat(".vec");
-                if(newFile == null){
-
-                }else if(newFile.getName().toLowerCase().endsWith(".vec")){
-                    newFile =new File( newFile.getParentFile(), newFile.getName()+ ".vec");
-
-                    System.out.print("janojgafjdngafjdg?");
-                }
-                newFile.getName().concat(".vec");
                 VecReader vecReader = new VecReader(this.getSize());
-
 
                 try{
                     File FilledFile = vecReader.TranslateCanvas(getPaintCanvas(),newFile);
-
-
                 }catch (Exception ex){
                     ex.printStackTrace();
                 }
 
-                System.out.print("What ever you did triggered this?");
+
             }
         }
     }

@@ -4,6 +4,9 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
+/**
+ * Polygon Pack constructor that acts as a container for colors and the polygon shape
+ */
 public class PolygonPack implements drawableObject, fillableObject {
     private Polygon polygonShape;
     private Color fillColor = transparent;
@@ -34,6 +37,13 @@ public class PolygonPack implements drawableObject, fillableObject {
         this.polygonShape = new Polygon(xPoints,yPoints,numberofPoints);
     }
 
+    /**
+     *  Creates a fixed polygon that makes the point of the polygon to follow the mouse direction
+     * @param startPoint first click
+     * @param endPoint     second click
+     * @param amountOfSides the amount of sides
+     * @return
+     */
     private Polygon makePolygon(Point2D startPoint, Point2D endPoint, int amountOfSides){
 
         double radius = startPoint.distance(endPoint);
@@ -44,13 +54,24 @@ public class PolygonPack implements drawableObject, fillableObject {
         int[] yPoints = new int[amountOfSides];
 
         for(int n = 0; n < amountOfSides; n ++){
-            xPoints[n] = (int) (startPoint.getX() + radius * Math.cos(((n * 2 * Math.PI )/ amountOfSides) + radianShift));
-            yPoints[n] = (int) (startPoint.getY() + radius * Math.sin(((n * 2 * Math.PI )/ amountOfSides) + radianShift));
+            xPoints[n] = (int) (startPoint.getX() + radius * Math.cos(((n * 2 * Math.PI )/ amountOfSides)
+                    + radianShift));
+            yPoints[n] = (int) (startPoint.getY() + radius * Math.sin(((n * 2 * Math.PI )/ amountOfSides)
+                    + radianShift));
         }
 
         return new Polygon(xPoints,yPoints,amountOfSides);
     }
 
+
+    /**
+     * Uses the same logic as the fixed polygon part however a second amount of points are turned by half
+     * the separation between points and drawn closer to emulate a stars indentiation.
+     * @param startPoint
+     * @param endPoint
+     * @param amountOfSides
+     * @return
+     */
     private Polygon makeStar(Point2D startPoint, Point2D endPoint, int amountOfSides){
 
         ArrayList<Point> bufferOuterList = new ArrayList<>(amountOfSides);
@@ -66,15 +87,19 @@ public class PolygonPack implements drawableObject, fillableObject {
         double radShift_Inner = Math.toRadians(anglePerCorner/2) + radShift_Outer;
 
         for(int iterationCount = 0; iterationCount < amountOfSides; iterationCount ++){
-            int xCoordinate = (int) (startPoint.getX() + outerRadius * Math.cos(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Outer));
-            int yCoordinate = (int) (startPoint.getY() + outerRadius * Math.sin(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Outer));
+            int xCoordinate = (int) (startPoint.getX() + outerRadius *
+                    Math.cos(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Outer));
+            int yCoordinate = (int) (startPoint.getY() + outerRadius *
+                    Math.sin(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Outer));
             bufferOuterList.add( new Point(xCoordinate,yCoordinate));
             System.out.print("Amount of Sides"+amountOfSides);
         }
 
         for(int iterationCount = 0; iterationCount < amountOfSides; iterationCount ++){
-            int xCoordinate = (int) (startPoint.getX() + innerRadius * Math.cos(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Inner));
-            int yCoordinate = (int) (startPoint.getY() + innerRadius * Math.sin(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Inner));
+            int xCoordinate = (int) (startPoint.getX() +
+                    innerRadius * Math.cos(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Inner));
+            int yCoordinate = (int) (startPoint.getY() +
+                    innerRadius * Math.sin(((iterationCount * 2 * Math.PI )/ amountOfSides) + radShift_Inner));
             bufferInnerList.add( new Point(xCoordinate,yCoordinate));
         }
 

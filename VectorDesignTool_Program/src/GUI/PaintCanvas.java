@@ -120,17 +120,19 @@ public class PaintCanvas extends JComponent {
 
     /**
      * Function used to iterate and color all the shapes in the drawable list
-     * @param g the graphics associted with the Component of this PaintCanvas instance
+     *  Usage of Tutorial Java2s
+     * Reference UrL: http://www.java2s.com/Tutorial/Java/0261__2D-Graphics/Mousedraganddraw.htm
+     *
+     * @param g the graphics associated with the Component of this PaintCanvas instance
      */
+
     public void paint(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
         g2.setStroke(new BasicStroke(1));
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
 
         g2.setPaint(this.lineColor);
-
         g2.draw(new Rectangle2D.Float(0,0,this.getWidth(),this.getHeight()));
 
         for(drawableObject drawObject: getDrawableList()){
