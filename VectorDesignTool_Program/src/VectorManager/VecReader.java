@@ -9,21 +9,53 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Class Vec Reader is used for translating Files and Paint canvases.
+ * @author Joshua Moratalla
+ * @since 06-02-2019
+ */
 public class VecReader {
 
+    /**
+     * The Dimension used to correctly scale the coordinates
+     * which is sourced by the component using the reader
+     */
     private Dimension canvasDimension;
 
+    /**
+     * Class Constructor of VecReader
+     * @param input the dimension to make the ratio and scale of the
+     *              coordinates correct when translated to and from
+     *              a load or save trigger.
+     */
     public VecReader(Dimension input){
         canvasDimension = input;
     }
+
+    /**
+     * Retrieves the scale dimensions width
+     * @return the x dimension
+     */
     public double getXDimension() {
         return this.canvasDimension.getWidth();
     }
 
+    /**
+     * Retrieves the scale dimensions height
+     * @return the y dimension
+     */
     public double getYDimension() {
         return this.canvasDimension.getWidth();
     }
 
+    /**
+     * Translates the shapes of a PaintCanvas into a file and returns it when filled with the
+     * vec commands.
+     * @param canvas the canvas from which it will provide the drawable objects to translate
+     * @param file the file from which the user selected to fill
+     * @return the file after it is filled with the vec commands
+     * @throws IOException
+     */
     public File TranslateCanvas(PaintCanvas canvas , File file) throws IOException{
         ArrayList<drawableObject> canvasShapes = canvas.getDrawableList();
 
@@ -65,8 +97,12 @@ public class VecReader {
         return file;
     }
 
-
-
+    /**
+     *
+     * @param file the file from which it sources its vec commands.
+     * @return
+     * @throws IOException
+     */
     public ArrayList<drawableObject> TranslateFile(File file) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
         ArrayList<String> linesOfText = new ArrayList<>();
@@ -103,6 +139,11 @@ public class VecReader {
         return shapePack;
     }
 
+    /**
+     * Returns a drawable object based on the string inputted.
+     * @param input the string that assumptively possesses vec commands.
+     * @return the equivalent drawobject.
+     */
     private drawableObject translateLine(String input){
         String[] lineSplit = input.split(" ");
         String firstPart = lineSplit[0];
@@ -136,15 +177,21 @@ public class VecReader {
         }
     }
 
-
+    /**
+     * Returns the translation of a hex decimal color into an instance of Color.
+     * @param input the string that contains the hexadecimal color
+     * @return
+     */
     private Color translateColor( String input){
         return Color.decode(input);
 
     }
 
-
-
-
+    /**
+     * Converts the String array into the equivalent Polygon
+     * @param lineset the String array with the coordinates of the shape
+     * @return
+     */
     private PolygonPack convertStringToPolygon(String[] lineset){
         System.out.println("returned a poly");
         String[] frontSnip  = Arrays.copyOfRange(lineset,1,lineset.length );
@@ -171,6 +218,11 @@ public class VecReader {
         return  new PolygonPack(newPoints);
     }
 
+    /**
+     * Converts the String array into the equivalent Line
+     * @param lineset the String array with the coordinates of the shape
+     * @return
+     */
     private LinePack convertStringToLine(String[] lineset){
         int numbersToMakeLine =5;
         String[] frontSnip  = Arrays.copyOfRange(lineset,1,numbersToMakeLine );
@@ -198,6 +250,11 @@ public class VecReader {
         return new LinePack(startPoint,endPoint);
     }
 
+    /**
+     * Converts the String array into the equivalent Ellipse
+     * @param lineset the String array with the coordinates of the shape
+     * @return
+     */
     private EllipsePack convertStringToEllipse(String[] lineset){
         int numbersToMakeLine =5;
 
@@ -216,6 +273,11 @@ public class VecReader {
         return new EllipsePack(startPoint,endPoint,true);
     }
 
+    /**
+     * Converts the String array into the equivalent Rectangele
+     * @param lineset the String array with the coordinates of the shape
+     * @return
+     */
     private RectanglePack convertStringToRectangle(String[] lineset){
         int numbersToMakeLine =4;
 
@@ -232,6 +294,11 @@ public class VecReader {
         return new RectanglePack(startPoint,endPoint);
     }
 
+    /**
+     * Converts the String array into the equivalent Plot
+     * @param lineset the String array with the coordinates of the shape
+     * @return
+     */
     private PlotPack convertStringToPlot(String[] lineset){
         int numbersToMakeLine =2;
 

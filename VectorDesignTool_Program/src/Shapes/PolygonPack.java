@@ -96,7 +96,7 @@ public class PolygonPack implements drawableObject, fillableObject {
     }
 
 
-    public Polygon getPolygonShape() {
+    private Polygon getPolygonShape() {
         return this.polygonShape;
     }
 
@@ -105,15 +105,6 @@ public class PolygonPack implements drawableObject, fillableObject {
         return this.polygonShape;
     }
 
-    @Override
-    public void rotateObject(double angleShift) {
-
-    }
-
-    @Override
-    public void scaleObject(double scaleSize) {
-
-    }
 
     @Override
     public Color getLineColor() {
@@ -150,8 +141,8 @@ public class PolygonPack implements drawableObject, fillableObject {
     }
 
     @Override
-    public String toLineColorString(Color currentPenColor) {
-        if(currentPenColor != getLineColor()){
+    public String toLineColorString(Color currentLineColor) {
+        if(currentLineColor != getLineColor()){
             return String.format("PEN #%s", Integer.toHexString(getLineColor().getRGB()));
         }else{
             return null;
@@ -166,11 +157,6 @@ public class PolygonPack implements drawableObject, fillableObject {
     @Override
     public void changeFillColor(Color newColor) {
         this.fillColor = newColor;
-    }
-
-    @Override
-    public void removeFillColor() {
-        this.fillColor = transparent;
     }
 
     @Override

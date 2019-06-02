@@ -12,7 +12,7 @@ public class PlotPack implements drawableObject {
         this.plotShape = new Line2D.Float(point,point);
     }
 
-    public Line2D.Float getPlotShape() {
+    private Line2D.Float getPlotShape() {
         return this.plotShape;
     }
 
@@ -21,15 +21,7 @@ public class PlotPack implements drawableObject {
         return this.plotShape;
     }
 
-    @Override
-    public void rotateObject(double angleShift) {
 
-    }
-
-    @Override
-    public void scaleObject(double scaleSize) {
-
-    }
 
     @Override
     public Color getLineColor() {
@@ -54,8 +46,8 @@ public class PlotPack implements drawableObject {
     }
 
     @Override
-    public String toLineColorString(Color currentPenColor) {
-        if(currentPenColor != getLineColor()){
+    public String toLineColorString(Color currentLineColor) {
+        if(currentLineColor != getLineColor()){
             return String.format("PEN #%s", Integer.toHexString(getLineColor().getRGB()));
         }else{
             return null;

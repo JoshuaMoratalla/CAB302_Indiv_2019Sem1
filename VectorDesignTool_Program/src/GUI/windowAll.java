@@ -16,6 +16,11 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Set;
 
+/**
+ * Class is used as the Main Jframe to display the GUI.
+ *@author Joshua Moratalla
+ *@since 06-02-2019
+ */
 public class windowAll extends JFrame implements ActionListener {
 
     public static Dimension staticDimensions = new Dimension(1016,1062);
@@ -31,42 +36,59 @@ public class windowAll extends JFrame implements ActionListener {
     private PaintCanvas paintCanvas;
 
 
+    /**
+     * Class Constructor for windowAll
+     */
     public windowAll(){
         setWindow();
         setMenuBar();
+
         this.paintCanvas = setPaintCanvas();
         this.paintCanvas.addMouseListener(setMouseListener());
         add(getPaintCanvas());
-        /*
-        this.paintCanvas = setPaintCanvas();
-        this.paintCanvas.addMouseListener(setMouseListener());
-        add(getPaintCanvas());
-        */
 
         pack();
         setVisible(true);
     }
 
+
+    /**
+     * Retrives the shape selection of this GUI.
+     * @return the ShapeType of this GUI.
+     */
     public ShapeType getShapeSelection() {
         return this.shapeSelection;
     }
 
+
+    /**
+     * Retrieves the current color assigned to the Line color variable.
+     * @return the line color variable.
+     */
     public Color getCurrentLineColor() {
         return this.currentLineColor;
     }
 
-    public JComponent getLineColorShower() {
-        return this.LineColorShower;
-    }
 
+    /**
+     * Retrieves the Points associated with the click of the mouse for GUI actions.
+     * @return the ArrayList of Points related to the users clicks
+     */
     public ArrayList<Point2D> getMouseClicks() {
         return this.mouseClicks;
     }
 
+    /**
+     * Retrieves the GUI's paint canvas
+     * @return the assigned PaintCanvas
+     */
     public PaintCanvas getPaintCanvas() {
         return this.paintCanvas;
     }
 
+    /**
+     * Sets the window on initialization
+     */
     private void setWindow(){
         setPreferredSize(staticDimensions);
 
@@ -74,6 +96,9 @@ public class windowAll extends JFrame implements ActionListener {
         setLocation( new Point((int)(windowPos.getWidth() - staticDimensions.getWidth())/2,(int) (windowPos.getHeight() - staticDimensions.getHeight())/2));
     }
 
+    /**
+     * Sets the MenuBar on initialization
+     */
     private void setMenuBar(){
         JMenuBar menuBAR = new JMenuBar();
         menuBAR.setOpaque(true);
@@ -96,6 +121,10 @@ public class windowAll extends JFrame implements ActionListener {
         setJMenuBar(menuBAR);
     }
 
+    /**
+     * Provides a JMenu of an arranged setFileMenu
+     * @return a JMenu composed of File menu items and its associated interactions
+     */
     private JMenu setFileMenu(){
         JMenu menuFile = new JMenu("File");
         JButton buttonNew = new JButton("New");
@@ -117,7 +146,10 @@ public class windowAll extends JFrame implements ActionListener {
 
         return  menuFile;
     }
-
+    /**
+     * Provides a JMenu of an arranged setFileMenu
+     * @return a JMenu composed of Shapes menu items and its associated interactions
+     */
     private JMenu setShapesMenu(){
         JMenu menuShapes = new JMenu("Shapes");
         ButtonGroup shapeRadioButtons = new ButtonGroup();
@@ -164,6 +196,10 @@ public class windowAll extends JFrame implements ActionListener {
         return menuShapes;
     }
 
+    /**
+     * Provides a JMenu of an arranged setFileMenu
+     * @return a JMenu composed of Color menu items and its associated interactions
+     */
     private JMenu setColorMenu(){
         JMenu colorMenu = new JMenu("Color");
         JButton LineColorButton = new JButton("Line Color");
@@ -191,10 +227,18 @@ public class windowAll extends JFrame implements ActionListener {
         return colorMenu;
     }
 
+    /**
+     * Sets the Paint canvas as blank.
+     * @return a blank PaintCanvas
+     */
     private PaintCanvas setPaintCanvas(){
         return new PaintCanvas();
     }
 
+    /**
+     * Mouse listener that handles the interactions the user has with the canvas
+     * @return a mouse listener connected with this instances PaintCanvas
+     */
     private MouseListener setMouseListener(){
         this.mouseClicks = new ArrayList<>();
 
@@ -272,7 +316,10 @@ public class windowAll extends JFrame implements ActionListener {
     }
 
 
-
+    /**
+     * An action event handler that triggers when the certain buttons of File and Color are triggered.
+     * @param e the event of the action
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -335,7 +382,6 @@ public class windowAll extends JFrame implements ActionListener {
             }
         }
         else if(e.getActionCommand().equals("Save")){
-
             JFileChooser fileChooser = new JFileChooser();
             int fileVal = fileChooser.showSaveDialog((JButton)e.getSource());
             if(fileVal == JFileChooser.APPROVE_OPTION){
@@ -357,6 +403,10 @@ public class windowAll extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Will hopeffully  be moved to an invidiual class by the time the author completes the java docs.
+     * @param args
+     */
     public static void main (String []args){
         new windowAll();
     }

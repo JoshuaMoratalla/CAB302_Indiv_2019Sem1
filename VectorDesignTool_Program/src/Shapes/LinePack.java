@@ -26,15 +26,6 @@ public class LinePack implements drawableObject {
         return lineShape;
     }
 
-    @Override
-    public void rotateObject(double angleShift) {
-
-    }
-
-    @Override
-    public void scaleObject(double scaleSize) {
-
-    }
 
     @Override
     public Color getLineColor() {
@@ -62,8 +53,8 @@ public class LinePack implements drawableObject {
     }
 
     @Override
-    public String toLineColorString(Color currentPenColor) {
-        if(currentPenColor != getLineColor()){
+    public String toLineColorString(Color currentLineColor) {
+        if(currentLineColor != getLineColor()){
             return String.format("PEN #%s", Integer.toHexString(getLineColor().getRGB()));
         }else{
             return null;

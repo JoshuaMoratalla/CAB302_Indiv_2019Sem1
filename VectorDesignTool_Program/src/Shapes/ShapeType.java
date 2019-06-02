@@ -13,7 +13,6 @@ public enum ShapeType {
     POLYSTAR("Polygon Star"),
     RECTFREE("Rectangle Free");
     String shapeTypeName;
-    int shapePoints;
 
     ShapeType(String name){
         this.shapeTypeName = name;
@@ -24,10 +23,9 @@ public enum ShapeType {
     }
 
     public static ShapeType matchEnum(String input){
-
         ShapeType buffer = null;
         for(ShapeType shape : EnumSet.allOf(ShapeType.class)){
-            if(shape.shapeTypeName == input){
+            if(shape.shapeTypeName.equals(input)){
                 buffer = shape;
             }
         }

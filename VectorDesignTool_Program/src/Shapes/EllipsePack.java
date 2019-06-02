@@ -42,7 +42,7 @@ public class EllipsePack implements drawableObject, fillableObject {
 
     }
 
-    public Ellipse2D.Float getEllipseShape() {
+    private Ellipse2D.Float getEllipseShape() {
         return this.ellipseShape;
     }
 
@@ -51,15 +51,6 @@ public class EllipsePack implements drawableObject, fillableObject {
         return this.ellipseShape;
     }
 
-    @Override
-    public void rotateObject(double angleShift) {
-
-    }
-
-    @Override
-    public void scaleObject(double scaleSize) {
-
-    }
 
     @Override
     public Color getLineColor() {
@@ -82,11 +73,6 @@ public class EllipsePack implements drawableObject, fillableObject {
     }
 
     @Override
-    public void removeFillColor() {
-        this.fillColor = transparent;
-    }
-
-    @Override
     public String toVectorString(Dimension scaleRatio) {
         StringBuilder str = new StringBuilder("ELLIPSE");
 
@@ -102,8 +88,8 @@ public class EllipsePack implements drawableObject, fillableObject {
     }
 
     @Override
-    public String toLineColorString(Color currentPenColor) {
-        if(currentPenColor != getLineColor()){
+    public String toLineColorString(Color currentLineColor) {
+        if(currentLineColor != getLineColor()){
             return String.format("PEN #%s", Integer.toHexString(getLineColor().getRGB()));
         }else{
             return null;
