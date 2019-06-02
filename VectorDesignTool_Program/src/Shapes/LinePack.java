@@ -13,10 +13,6 @@ public class LinePack implements drawableObject {
         this.lineShape = new Line2D.Float(startPoint,endPoint);
     }
 
-    //public LinePack(Point2D[] points){
-    //    this.lineShape = new Line2D.Float(points[0],points[1]);
-    //}
-
     public Line2D.Float getLineShape() {
         return lineShape;
     }

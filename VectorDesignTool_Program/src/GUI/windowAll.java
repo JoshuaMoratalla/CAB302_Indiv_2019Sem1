@@ -40,6 +40,7 @@ public class windowAll extends JFrame implements ActionListener {
      * Class Constructor for windowAll
      */
     public windowAll(){
+        super("Vector Design Tool");
         setWindow();
         setMenuBar();
 
@@ -69,7 +70,6 @@ public class windowAll extends JFrame implements ActionListener {
         return this.currentLineColor;
     }
 
-
     /**
      * Retrieves the Points associated with the click of the mouse for GUI actions.
      * @return the ArrayList of Points related to the users clicks
@@ -91,7 +91,6 @@ public class windowAll extends JFrame implements ActionListener {
      */
     private void setWindow(){
         setPreferredSize(staticDimensions);
-
         Dimension windowPos = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation( new Point((int)(windowPos.getWidth() - staticDimensions.getWidth())/2,(int) (windowPos.getHeight() - staticDimensions.getHeight())/2));
     }
@@ -305,6 +304,9 @@ public class windowAll extends JFrame implements ActionListener {
         return mouseListener;
     }
 
+    /**
+     * Makeing a new canvas though its in efficient since it only handles for new Jframes and  not load.
+     */
     private void makeNewCanvas(){
         remove(this.paintCanvas);
         this.paintCanvas = setPaintCanvas();
@@ -312,9 +314,7 @@ public class windowAll extends JFrame implements ActionListener {
         add(getPaintCanvas());
         validate();//
 
-
     }
-
 
     /**
      * An action event handler that triggers when the certain buttons of File and Color are triggered.
@@ -371,9 +371,10 @@ public class windowAll extends JFrame implements ActionListener {
             if(filePath!= null){
                 try {
                     //this.add( new PaintCanvas( new File(filePath)));
+                    remove(this.paintCanvas);
                     this.paintCanvas = new PaintCanvas( new File(filePath));
+                    this.paintCanvas.addMouseListener(setMouseListener());
                     add(this.paintCanvas);
-
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -383,22 +384,34 @@ public class windowAll extends JFrame implements ActionListener {
         }
         else if(e.getActionCommand().equals("Save")){
             JFileChooser fileChooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    ".vec","vec");
+            fileChooser.setFileFilter(filter);
+
             int fileVal = fileChooser.showSaveDialog((JButton)e.getSource());
             if(fileVal == JFileChooser.APPROVE_OPTION){
                 File newFile = fileChooser.getSelectedFile();
+                newFile.getName().concat(".vec");
                 if(newFile == null){
-                    System.out.print("What ever you did triggered this?");
+
                 }else if(newFile.getName().toLowerCase().endsWith(".vec")){
                     newFile =new File( newFile.getParentFile(), newFile.getName()+ ".vec");
+
+                    System.out.print("janojgafjdngafjdg?");
                 }
+                newFile.getName().concat(".vec");
                 VecReader vecReader = new VecReader(this.getSize());
+
 
                 try{
                     File FilledFile = vecReader.TranslateCanvas(getPaintCanvas(),newFile);
 
+
                 }catch (Exception ex){
                     ex.printStackTrace();
                 }
+
+                System.out.print("What ever you did triggered this?");
             }
         }
     }

@@ -14,10 +14,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/PaintCanvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="18" selection-end-column="3" />
+            <state relative-caret-position="-820">
+              <caret line="55" column="43" lean-forward="true" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/windowAll.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="401" column="49" lean-forward="true" selection-start-line="401" selection-start-column="49" selection-end-line="401" selection-end-column="49" />
+              <folding>
+                <element signature="method#setMenuBar#0;class#windowAll#0" />
+                <element signature="method#setFileMenu#0;class#windowAll#0" />
+                <element signature="method#setShapesMenu#0;class#windowAll#0" />
+                <element signature="method#setColorMenu#0;class#windowAll#0" />
+                <element signature="method#setMouseListener#0;class#windowAll#0" />
               </folding>
             </state>
           </provider>
@@ -33,46 +49,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/VectorManager/VecReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#673#674#0" expanded="true" />
-                <element signature="e#712#713#0" expanded="true" />
-                <element signature="e#840#841#0" expanded="true" />
-                <element signature="e#894#895#0" expanded="true" />
-                <element signature="e#1023#1024#0" expanded="true" />
-                <element signature="e#1077#1078#0" expanded="true" />
-                <element signature="method#TranslateCanvas#0;class#VecReader#0" />
-                <element signature="method#TranslateFile#0;class#VecReader#0" />
-                <element signature="method#translateLine#0;class#VecReader#0" />
-                <element signature="method#translateColor#0;class#VecReader#0" />
-                <element signature="method#convertStringToPolygon#0;class#VecReader#0" />
-                <element signature="method#convertStringToLine#0;class#VecReader#0" />
-                <element signature="method#convertStringToEllipse#0;class#VecReader#0" />
-                <element signature="method#convertStringToRectangle#0;class#VecReader#0" />
-                <element signature="method#convertStringToPlot#0;class#VecReader#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Shapes/RectanglePack.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
-              <folding>
-                <element signature="e#969#970#0" expanded="true" />
-                <element signature="e#1011#1012#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Shapes/drawableObject.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="387">
@@ -81,7 +57,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Shapes/fillableObject.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -93,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Shapes/PolygonPack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
+            <state relative-caret-position="2448">
               <caret line="159" column="5" selection-start-line="159" selection-start-column="5" selection-end-line="159" selection-end-column="5" />
               <folding>
                 <element signature="e#4366#4367#0" expanded="true" />
@@ -130,10 +106,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/VectorManager/VecReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-480">
+              <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#TranslateCanvas#0;class#VecReader#0" />
+                <element signature="method#TranslateFile#0;class#VecReader#0" />
+                <element signature="method#translateLine#0;class#VecReader#0" />
+                <element signature="method#translateColor#0;class#VecReader#0" />
+                <element signature="method#convertStringToPolygon#0;class#VecReader#0" />
+                <element signature="method#convertStringToLine#0;class#VecReader#0" />
+                <element signature="method#convertStringToEllipse#0;class#VecReader#0" />
+                <element signature="method#convertStringToRectangle#0;class#VecReader#0" />
+                <element signature="method#convertStringToPlot#0;class#VecReader#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Shapes/LinePack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-55">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="153">
+              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -143,10 +140,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/GUI/windowAll.java" />
-        <option value="$PROJECT_DIR$/src/GUI/PaintCanvas.java" />
         <option value="$PROJECT_DIR$/src/VectorManager/VecReader.java" />
-        <option value="$PROJECT_DIR$/src/Shapes/LinePack.java" />
         <option value="$PROJECT_DIR$/src/Shapes/PlotPack.java" />
         <option value="$PROJECT_DIR$/src/Shapes/ShapeType.java" />
         <option value="$PROJECT_DIR$/src/Shapes/PolygonPack.java" />
@@ -154,6 +148,9 @@
         <option value="$PROJECT_DIR$/src/Shapes/EllipsePack.java" />
         <option value="$PROJECT_DIR$/src/Shapes/drawableObject.java" />
         <option value="$PROJECT_DIR$/src/Shapes/fillableObject.java" />
+        <option value="$PROJECT_DIR$/src/GUI/PaintCanvas.java" />
+        <option value="$PROJECT_DIR$/src/Shapes/LinePack.java" />
+        <option value="$PROJECT_DIR$/src/GUI/windowAll.java" />
       </list>
     </option>
   </component>
@@ -207,7 +204,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559468989211" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559478159704" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
@@ -269,7 +266,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18656716" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18656716" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -278,7 +275,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3261105" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3261105" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -298,101 +295,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/GUI/windowAll.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-          <folding>
-            <element signature="method#windowAll#0;class#windowAll#0" />
-            <element signature="e#1441#1442#0" expanded="true" />
-            <element signature="e#1483#1484#0" expanded="true" />
-            <element signature="e#1617#1618#0" expanded="true" />
-            <element signature="e#1661#1662#0" expanded="true" />
-            <element signature="e#1928#1929#0" expanded="true" />
-            <element signature="e#1967#1968#0" expanded="true" />
-            <element signature="e#2089#2090#0" expanded="true" />
-            <element signature="e#2128#2129#0" expanded="true" />
-            <element signature="method#setMenuBar#0;class#windowAll#0" />
-            <element signature="method#setFileMenu#0;class#windowAll#0" />
-            <element signature="method#setShapesMenu#0;class#windowAll#0" />
-            <element signature="method#setColorMenu#0;class#windowAll#0" />
-            <element signature="e#6567#6568#0" expanded="true" />
-            <element signature="e#6607#6608#0" expanded="true" />
-            <element signature="method#setMouseListener#0;class#windowAll#0" />
-            <element signature="e#7029#10212#0" expanded="true" />
-            <element signature="e#10211#10212#0" expanded="true" />
-            <element signature="e#10375#10989#1" />
-            <element signature="e#11336#11337#0" expanded="true" />
-            <element signature="e#11421#11422#0" expanded="true" />
-            <element signature="e#11050#11664#1" />
-            <element signature="e#12011#12012#0" expanded="true" />
-            <element signature="e#12096#12097#0" expanded="true" />
-            <element signature="e#11716#11756#1" />
-            <element signature="e#11810#12671#1" />
-            <element signature="e#12724#13585#1" />
-            <element signature="e#14510#14511#0" expanded="true" />
-            <element signature="e#14541#14542#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/PaintCanvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="18" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/VectorManager/VecReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#673#674#0" expanded="true" />
-            <element signature="e#712#713#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#1023#1024#0" expanded="true" />
-            <element signature="e#1077#1078#0" expanded="true" />
-            <element signature="method#TranslateCanvas#0;class#VecReader#0" />
-            <element signature="method#TranslateFile#0;class#VecReader#0" />
-            <element signature="method#translateLine#0;class#VecReader#0" />
-            <element signature="method#translateColor#0;class#VecReader#0" />
-            <element signature="method#convertStringToPolygon#0;class#VecReader#0" />
-            <element signature="method#convertStringToLine#0;class#VecReader#0" />
-            <element signature="method#convertStringToEllipse#0;class#VecReader#0" />
-            <element signature="method#convertStringToRectangle#0;class#VecReader#0" />
-            <element signature="method#convertStringToPlot#0;class#VecReader#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Shapes/PlotPack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding>
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#402#403#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Shapes/PolygonPack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="159" column="5" selection-start-line="159" selection-start-column="5" selection-end-line="159" selection-end-column="5" />
-          <folding>
-            <element signature="e#4366#4367#0" expanded="true" />
-            <element signature="e#4406#4407#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Shapes/RectanglePack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
@@ -422,13 +324,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Shapes/LinePack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Shapes/drawableObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="387">
@@ -440,6 +335,78 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="80" lean-forward="true" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Shapes/PolygonPack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2448">
+          <caret line="159" column="5" selection-start-line="159" selection-start-column="5" selection-end-line="159" selection-end-column="5" />
+          <folding>
+            <element signature="e#4366#4367#0" expanded="true" />
+            <element signature="e#4406#4407#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Shapes/LinePack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Shapes/PlotPack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding>
+            <element signature="e#365#366#0" expanded="true" />
+            <element signature="e#402#403#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/VectorManager/VecReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#TranslateCanvas#0;class#VecReader#0" />
+            <element signature="method#TranslateFile#0;class#VecReader#0" />
+            <element signature="method#translateLine#0;class#VecReader#0" />
+            <element signature="method#translateColor#0;class#VecReader#0" />
+            <element signature="method#convertStringToPolygon#0;class#VecReader#0" />
+            <element signature="method#convertStringToLine#0;class#VecReader#0" />
+            <element signature="method#convertStringToEllipse#0;class#VecReader#0" />
+            <element signature="method#convertStringToRectangle#0;class#VecReader#0" />
+            <element signature="method#convertStringToPlot#0;class#VecReader#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/PaintCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-820">
+          <caret line="55" column="43" lean-forward="true" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/windowAll.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="401" column="49" lean-forward="true" selection-start-line="401" selection-start-column="49" selection-end-line="401" selection-end-column="49" />
+          <folding>
+            <element signature="method#setMenuBar#0;class#windowAll#0" />
+            <element signature="method#setFileMenu#0;class#windowAll#0" />
+            <element signature="method#setShapesMenu#0;class#windowAll#0" />
+            <element signature="method#setColorMenu#0;class#windowAll#0" />
+            <element signature="method#setMouseListener#0;class#windowAll#0" />
+          </folding>
         </state>
       </provider>
     </entry>

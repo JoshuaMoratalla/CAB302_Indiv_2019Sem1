@@ -61,7 +61,7 @@ public class PaintCanvas extends JComponent {
         System.out.println("PaintCanvas is initiated");
         this.UndoList = new ArrayList<>();
 
-        VecReader vecReader = new VecReader(new Dimension(984,938));
+        VecReader vecReader = new VecReader(new Dimension(1000,1000));
         this.drawableList = vecReader.TranslateFile(file);
     }
 
